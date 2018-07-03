@@ -8,8 +8,11 @@
 
 #import "TimelineViewController.h"
 #import "APIManager.h"
+#import "Tweet.h"
 
 @interface TimelineViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *ImageViewCell;
+@property (weak, nonatomic) IBOutlet UILabel *tweetCell;
 
 @end
 
@@ -21,12 +24,19 @@
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
+            self.tweets.array = tweets;
+            self.tweets = [Tweet tweetsWithArray:tweets];
+            
+            //reload TableView
+            
             NSLog(@"😎😎😎 Successfully loaded home timeline");
             for (NSDictionary *dictionary in tweets) {
                 NSString *text = dictionary[@"text"];
                 NSLog(@"%@", text);
             }
-        } else {
+        }
+        
+        else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
     }];
