@@ -13,7 +13,7 @@
 @interface TweetCell : UITableViewCell
 
 @property(strong, nonatomic) Tweet *tweet;
-@property(strong, nonatomic) UIColor *mainColor;
+//@property(strong, nonatomic) UIColor *mainColor;
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
@@ -27,7 +27,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *retweetCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likeCountLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
+- (IBAction)didTapLike:(id)sender;
+- (IBAction)didTapRetweet:(id)sender;
 
--(void) configureTweetCell:(Tweet *)tweet;
-
+- (void) configureTweetCell:(Tweet *)tweet;
+- (void) refreshData;
 @end

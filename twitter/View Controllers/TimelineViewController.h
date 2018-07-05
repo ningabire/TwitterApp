@@ -13,6 +13,8 @@
 @property(nonatomic, strong) NSMutableArray *tweets;
 //@property(strong, nonatomic) NSMutableArray *tweetsArray;
 
+- (IBAction)logoutButton:(id)sender;
+- (IBAction)editButton:(id)sender;
 
 
 @end
