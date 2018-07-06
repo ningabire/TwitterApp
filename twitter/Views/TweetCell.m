@@ -82,6 +82,9 @@
 -(void) configureTweetCell:(Tweet *)tweet{
     self.tweet = tweet;
     self.nameLabel.text = self.tweet.user.name;
+    NSString *nickName = self.tweet.user.screenName;
+    NSString *designator = @"@";
+    self.usernameLabel.text = [NSString stringWithFormat:@"%@%@",designator,nickName];
     self.tweetLabel.text = self.tweet.text;
     self.dateLabel.text = self.tweet.createdAtString;
     NSString *likeCount= [NSString stringWithFormat:@"%i", self.tweet.favoriteCount];
