@@ -29,7 +29,7 @@
     [super viewDidLoad];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    self.tableView.rowHeight = 150;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self fetchTweets];
     
    self.refreshControl = [[UIRefreshControl alloc]init];
