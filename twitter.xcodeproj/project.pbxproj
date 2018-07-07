@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		327A39E220EDBAC200B4FE07 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 327A39E120EDBAC200B4FE07 /* ComposeViewController.m */; };
 		327A39E320EDEEED00B4FE07 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD278F520BCB68B0085BC29 /* APIManager.m */; };
+		327FA6B120F02B6A009C55BA /* InfiniteScrollActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 327FA6B020F02B6A009C55BA /* InfiniteScrollActivityView.m */; };
+		327FA6B420F03BF2009C55BA /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 327FA6B320F03BF2009C55BA /* DetailsViewController.m */; };
 		32DD5A5C20EAEC95000913EB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 32DD5A5B20EAEC95000913EB /* User.m */; };
 		32DD5A5F20EAEDED000913EB /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 32DD5A5E20EAEDED000913EB /* Tweet.m */; };
 		32DD5A6520EBF22C000913EB /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32DD5A6420EBF22C000913EB /* TweetCell.m */; };
@@ -27,6 +29,16 @@
 		1397EA94AE1DE5F26C1724FD /* Pods-twitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitter.release.xcconfig"; path = "Pods/Target Support Files/Pods-twitter/Pods-twitter.release.xcconfig"; sourceTree = "<group>"; };
 		327A39E020EDBAC200B4FE07 /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
 		327A39E120EDBAC200B4FE07 /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
+		327FA6AF20F02B6A009C55BA /* InfiniteScrollActivityView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InfiniteScrollActivityView.h; sourceTree = "<group>"; };
+		327FA6B020F02B6A009C55BA /* InfiniteScrollActivityView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InfiniteScrollActivityView.m; sourceTree = "<group>"; };
+		327FA6B220F03BF2009C55BA /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		327FA6B320F03BF2009C55BA /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		327FA6B520F04710009C55BA /* SVPullToRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SVPullToRefresh.h; path = SVPullToRefresh/SVPullToRefresh.h; sourceTree = "<group>"; };
+		327FA6B620F04710009C55BA /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+SVInfiniteScrolling.h"; path = "SVPullToRefresh/UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
+		327FA6B720F04710009C55BA /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+SVInfiniteScrolling.m"; path = "SVPullToRefresh/UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
+		327FA6B820F04710009C55BA /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+SVPullToRefresh.h"; path = "SVPullToRefresh/UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
+		327FA6B920F04710009C55BA /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+SVPullToRefresh.m"; path = "SVPullToRefresh/UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
+		327FA6BF20F0474A009C55BA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		32DD5A5A20EAEC95000913EB /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		32DD5A5B20EAEC95000913EB /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		32DD5A5D20EAEDED000913EB /* Tweet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
@@ -68,9 +80,22 @@
 		038B3E5FF5428BF9C6A8E0DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				327FA6BF20F0474A009C55BA /* QuartzCore.framework */,
 				43D6142D6F34C1AE98EE4951 /* libPods-twitter.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		327FA6BE20F04710009C55BA /* SVPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				327FA6B520F04710009C55BA /* SVPullToRefresh.h */,
+				327FA6B620F04710009C55BA /* UIScrollView+SVInfiniteScrolling.h */,
+				327FA6B720F04710009C55BA /* UIScrollView+SVInfiniteScrolling.m */,
+				327FA6B820F04710009C55BA /* UIScrollView+SVPullToRefresh.h */,
+				327FA6B920F04710009C55BA /* UIScrollView+SVPullToRefresh.m */,
+			);
+			path = SVPullToRefresh;
 			sourceTree = "<group>";
 		};
 		6AD278CC20BC4B950085BC29 = {
@@ -94,6 +119,7 @@
 		6AD278D720BC4B950085BC29 /* twitter */ = {
 			isa = PBXGroup;
 			children = (
+				327FA6BE20F04710009C55BA /* SVPullToRefresh */,
 				6AD2790320BCC01B0085BC29 /* View Controllers */,
 				6AD278FF20BCBF280085BC29 /* Views */,
 				6AD278F720BCB6900085BC29 /* API */,
@@ -136,6 +162,8 @@
 				32DD5A5D20EAEDED000913EB /* Tweet.h */,
 				32DD5A6320EBF22C000913EB /* TweetCell.h */,
 				32DD5A6420EBF22C000913EB /* TweetCell.m */,
+				327FA6AF20F02B6A009C55BA /* InfiniteScrollActivityView.h */,
+				327FA6B020F02B6A009C55BA /* InfiniteScrollActivityView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -149,6 +177,8 @@
 				6AD2790820BCC04D0085BC29 /* TimelineViewController.m */,
 				327A39E020EDBAC200B4FE07 /* ComposeViewController.h */,
 				327A39E120EDBAC200B4FE07 /* ComposeViewController.m */,
+				327FA6B220F03BF2009C55BA /* DetailsViewController.h */,
+				327FA6B320F03BF2009C55BA /* DetailsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -257,11 +287,13 @@
 				32DD5A6520EBF22C000913EB /* TweetCell.m in Sources */,
 				6AD278F320BCA6020085BC29 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
 				32DD5A5C20EAEC95000913EB /* User.m in Sources */,
+				327FA6B420F03BF2009C55BA /* DetailsViewController.m in Sources */,
 				327A39E220EDBAC200B4FE07 /* ComposeViewController.m in Sources */,
 				327A39E320EDEEED00B4FE07 /* APIManager.m in Sources */,
 				6AD278E820BC4B970085BC29 /* main.m in Sources */,
 				32DD5A5F20EAEDED000913EB /* Tweet.m in Sources */,
 				6AD2790620BCC0380085BC29 /* LoginViewController.m in Sources */,
+				327FA6B120F02B6A009C55BA /* InfiniteScrollActivityView.m in Sources */,
 				6AD278DA20BC4B950085BC29 /* AppDelegate.m in Sources */,
 				6AD2790920BCC04D0085BC29 /* TimelineViewController.m in Sources */,
 			);

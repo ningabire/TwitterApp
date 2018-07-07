@@ -80,9 +80,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="184.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqG-nZ-tEh">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqG-nZ-tEh">
                                                     <rect key="frame" x="105" y="31.5" width="240" height="14.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -134,8 +134,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7B-l1-dD0">
-                                                    <rect key="frame" x="135" y="103" width="10.5" height="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7B-l1-dD0">
+                                                    <rect key="frame" x="135" y="103" width="22" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -204,12 +204,12 @@
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="7Y9-Ob-Ihc" secondAttribute="bottom" constant="35" id="nf7-VS-Df3"/>
                                                 <constraint firstAttribute="trailing" secondItem="9ac-df-45H" secondAttribute="trailing" constant="15" id="pBl-TH-mqk"/>
                                                 <constraint firstItem="HaO-ss-Q7R" firstAttribute="top" secondItem="mqG-nZ-tEh" secondAttribute="bottom" constant="50" id="pdd-fh-27T"/>
-                                                <constraint firstItem="C7B-l1-dD0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wEh-Sg-PR9" secondAttribute="trailing" constant="8" symbolic="YES" id="rT6-45-CjS"/>
+                                                <constraint firstItem="C7B-l1-dD0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wEh-Sg-PR9" secondAttribute="trailing" constant="10" id="rT6-45-CjS"/>
                                                 <constraint firstItem="jyc-2q-niG" firstAttribute="top" secondItem="Rod-sL-Xh0" secondAttribute="top" constant="3" id="t1b-9U-8Ld"/>
                                                 <constraint firstItem="mqG-nZ-tEh" firstAttribute="leading" secondItem="7Y9-Ob-Ihc" secondAttribute="trailing" constant="13" id="uad-Ia-iKl"/>
                                                 <constraint firstItem="C7B-l1-dD0" firstAttribute="top" secondItem="wEh-Sg-PR9" secondAttribute="top" constant="7" id="vjP-8b-4Iz"/>
                                                 <constraint firstItem="7Y9-Ob-Ihc" firstAttribute="leading" secondItem="RYw-oy-bkF" secondAttribute="leading" constant="13" id="wEE-xD-kZ4"/>
-                                                <constraint firstAttribute="trailing" secondItem="C7B-l1-dD0" secondAttribute="trailing" constant="229.5" id="yn2-vO-C2d"/>
+                                                <constraint firstAttribute="trailing" secondItem="C7B-l1-dD0" secondAttribute="trailing" constant="218" id="yn2-vO-C2d"/>
                                                 <constraint firstItem="jyc-2q-niG" firstAttribute="top" secondItem="mqG-nZ-tEh" secondAttribute="bottom" constant="53" id="ys0-P7-NhC"/>
                                                 <constraint firstItem="jyc-2q-niG" firstAttribute="leading" secondItem="Rod-sL-Xh0" secondAttribute="trailing" constant="56.5" id="ys1-uq-GtU"/>
                                             </constraints>

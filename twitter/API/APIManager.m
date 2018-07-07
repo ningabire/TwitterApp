@@ -47,8 +47,8 @@ static NSString * const consumerSecret = @"qm7hsGrlHPqMkuAwoEI6EnbKzX5GRliZeV2Db
     return self;
 }
 
+
 - (void)getHomeTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion {
-    
     [self GET:@"1.1/statuses/home_timeline.json"
    parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
       
@@ -120,4 +120,15 @@ static NSString * const consumerSecret = @"qm7hsGrlHPqMkuAwoEI6EnbKzX5GRliZeV2Db
     }];
 }
 
+- (void) unretweet :(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion {
+    
+    NSString *urlString = @"1.1/statuses/unretweet.json";
+    NSDictionary *parameters = @{@"id": tweet.idStr};
+    [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary) {
+        Tweet *tweet = [[Tweet alloc]initWithDictionary:tweetDictionary];
+        completion(tweet, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
+}
 @end;

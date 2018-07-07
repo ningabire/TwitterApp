@@ -44,7 +44,6 @@
 - (IBAction)tweetButton:(id)sender {
     
        [[APIManager shared] postStatusWithText:self.composeText.text completion:^(Tweet * tweet, NSError *error) {
-        //   NSLog(@"%@", tweet);
            if (error) {
                NSLog(@"failed to post tweet : %@", error.localizedDescription);
            }

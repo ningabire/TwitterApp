@@ -13,7 +13,6 @@
 @interface TweetCell : UITableViewCell
 
 @property(strong, nonatomic) Tweet *tweet;
-//@property(strong, nonatomic) UIColor *mainColor;
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;

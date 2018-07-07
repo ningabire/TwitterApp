@@ -14,16 +14,22 @@
 #import "ComposeViewController.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "UIScrollView+SVInfiniteScrolling.h"
+#import "InfiniteScrollActivityView.h"
 
 @interface TimelineViewController () <composeViewControllerDelegate,UITableViewDataSource, UITableViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property(strong, nonatomic) UIRefreshControl *refreshControl;
 @property(strong, nonatomic) NSMutableArray *tweetsArray;
-
+@property (assign, nonatomic) BOOL isMoreDataLoading;
 
 @end
 
 @implementation TimelineViewController
+
+bool isMoreDataLoading = false;
+InfiniteScrollActivityView* loadingMoreView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,6 +41,16 @@
    self.refreshControl = [[UIRefreshControl alloc]init];
     [self.refreshControl addTarget:self action:@selector(fetchTweets) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+    //set up infinite scroll loading indicator
+    CGRect frame = CGRectMake(0, self.tableView.contentSize.height, self.tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight);
+    loadingMoreView = [[InfiniteScrollActivityView alloc] initWithFrame:frame];
+    loadingMoreView.hidden = true;
+    [self.tableView addSubview:loadingMoreView];
+    
+    UIEdgeInsets insets = self.tableView.contentInset;
+    insets.bottom += InfiniteScrollActivityView.defaultHeight;
+    self.tableView.contentInset = insets;
     
 }
 
@@ -57,11 +73,8 @@
 // Hides the RefreshControl
 
 - (void) fetchTweets {
-    [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
+    [[APIManager shared]getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
-            //NSURL *url = [NSURL URLWithString:@"%", url];
-
-            //self.tweets.array = tweets;
             self.tweets = [Tweet tweetsWithArray:tweets];
             
             //reload TableView
@@ -85,7 +98,7 @@
 }
 
 - (void)didTweet:(Tweet *)tweet {
-    NSLog(@"%@", _tweetsArray);
+    //NSLog(@"%@", _tweetsArray);
     [self.tweets insertObject:tweet atIndex:0];
     [self.tableView reloadData];
 }
@@ -107,5 +120,59 @@
 - (IBAction)didTapLike:(id)sender {
     
 }
+
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView {
+    //handle scroll behavior
+    
+    if (!isMoreDataLoading) {
+
+        // Calculate the position of one screen length before the bottom of the results
+        int scrollViewContentHeight = self.tableView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
+        
+        // When the user has scrolled past the threshold, start requesting
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
+            isMoreDataLoading = true;
+            
+            // update position of loadingMoreView, and start loading indicator
+            CGRect frame = CGRectMake(0, self.tableView.contentSize.height, self.tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight);
+            loadingMoreView.frame = frame;
+            [loadingMoreView startAnimating];
+            
+            // Load more results
+            [self loadMoreData];
+        }
+        
+    }
+    
+ }
+
+- (void) loadMoreData {
+    
+    // create the NSURLRequest (myRequest)
+   NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    
+    NSURLRequest *request;
+    NSURLSessionDataTask *task = [session dataTaskWithRequest: request completionHandler:^(NSData *data, NSURLResponse *response, NSError *requestError) {
+        if (requestError != nil) {
+            
+        }
+        
+        else {
+            //update flag
+            self.isMoreDataLoading = false;
+            
+            //stop the loading indicator
+            [loadingMoreView stopAnimating];
+            
+            
+            //reload the tableView now that there is new data
+            [self.tableView reloadData];
+        }
+    }];
+    [task resume];
+}
+
 
 @end

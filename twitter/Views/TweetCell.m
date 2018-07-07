@@ -24,9 +24,6 @@
         self.tweet.favorited = YES;
         self.tweet.favoriteCount += 1;
         self.favorButton.selected =YES;
-       // UIButton *likebtn = (UIButton*) sender;
-        
-        NSLog(@"Liked tweet");
         
        [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
             if(error){
@@ -39,7 +36,6 @@
     }
     
     else {
-       //Do nothing
         self.tweet.favorited = NO;
         self.tweet.favoriteCount -= 1;
         self.favorButton.selected = NO;
@@ -71,7 +67,6 @@
                 NSLog(@"Error retweeting tweet: %@", error.localizedDescription);
             }
             else{
-                self.retweetButton.selected = NO;
                 NSLog(@"Successfully retweeted the following Tweet: %@", tweet.text);
             }
         }];
@@ -80,6 +75,16 @@
     else {
         self.tweet.retweeted = NO;
         self.tweet.retweetCount -= 1;
+        self.retweetButton.selected = NO;
+        
+        [[APIManager shared] unretweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+            if(error){
+                NSLog(@"Error unretweeting tweet: %@", error.localizedDescription);
+            }
+            else{
+                NSLog(@"Successfully unretweeted the following Tweet: %@", tweet.text);
+            }
+        }];
     }
     
     [self refreshData];
